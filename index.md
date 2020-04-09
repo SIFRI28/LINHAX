@@ -36,106 +36,40 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 
 Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
 
-<title>Calendrier du mois</title>
-</head>
-<body bgcolor="#FFFFFF" text="#000000">
- 
-<h1 style="font-family:Verdana,Arial; font-weight:normal">Calendrier du mois</h1>
- 
-<script type="text/javascript">
-<!--
-var d = new Date();
-var dm = d.getMonth() + 1;
-var dan = d.getYear();
-if(dan < 999) dan+=1900;
-calendrier(dm,dan);
- 
-function calendrier(mois,an) {
-nom_mois = new Array
-("Janvier","F&eacute;vrier","Mars","Avril","Mai","Juin","Juillet",
-"Ao&ucirc;t","Septembre","Octobre","Novembre","D&eacute;cembre");
-jour = new Array ("Lu","Ma","Me","Je","Ve","Sa","Di");
- 
-var police_entete = "Verdana,Arial"; /* police entête de calendrier  */
-var taille_pol_entete = 3;           /* taille de police 1-7 entête de calendrier  */
-var couleur_pol_entete = "#FFFF00";     /* couleur de police entête de calendrier  */
-var arrplan_entete = "#000066";        /* couleur d'arrière plan entête de calendrier  */
-var police_jours = "Verdana,Arial"; /* police affichage des jours  */
-var taille_pol_jours = 3;           /* taille de police 1-7 affichage des jours  */
-var coul_pol_jours = "#000000";     /* couleur de police affichage des jours  */
-var arrplan_jours = "#D0F0F0";        /* couleur d'arrière plan affichage des jours  */
-var couleur_dim = "red";        /* couleur de police pour dimanches  */
-var couleur_cejour = "#FFFF00";        /* couleur d'arrière plan pour aujourd'hui  */
- 
-var maintenant = new Date();
-var ce_mois = maintenant.getMonth() + 1;
-var cette_annee = maintenant.getYear();
-if(cette_annee < 999) cette_annee+=1900;
-var ce_jour = maintenant.getDate();
-var temps = new Date(an,mois-1,1);
-var Start = temps.getDay();
-if(Start > 0) Start--;
-else Start = 6;
-var Stop = 31;
-if(mois==4 ||mois==6 || mois==9 || mois==11 ) --Stop;
-if(mois==2) {
- Stop = Stop - 3;
- if(an%4==0) Stop++;
- if(an%100==0) Stop--;
- if(an%400==0) Stop++;
-}
-document.write('<table border="3" cellpadding="1" cellspacing="1">');
-var entete_mois = nom_mois[mois-1] + " " + an;
-inscrit_entete(entete_mois,arrplan_entete,couleur_pol_entete,taille_pol_entete,police_entete);
-var nombre_jours = 1;
-for(var i=0;i<=5;i++) {
-  document.write("<tr>");
-  for(var j=0;j<=5;j++) {
-    if((i==0)&&(j < Start))
-     inscrit_cellule("&#160;",arrplan_jours,coul_pol_jours,taille_pol_jours,police_jours);
-    else {
-      if(nombre_jours > Stop)
-        inscrit_cellule("&#160;",arrplan_jours,coul_pol_jours,taille_pol_jours,police_jours);
-      else {
-        if((an==cette_annee)&&(mois==ce_mois)&&(nombre_jours==ce_jour))
-         inscrit_cellule(nombre_jours,couleur_cejour,coul_pol_jours,taille_pol_jours,police_jours);
-        else
-         inscrit_cellule(nombre_jours,arrplan_jours,coul_pol_jours,taille_pol_jours,police_jours);
-        nombre_jours++;
-        }
-      }
-    }
-    if(nombre_jours > Stop)
-      inscrit_cellule("&#160;",arrplan_jours,couleur_dim,taille_pol_jours,police_jours);
-    else {
-      if((an==cette_annee)&&(mois==ce_mois)&&(nombre_jours==ce_jour))
-        inscrit_cellule(nombre_jours,couleur_cejour,couleur_dim,taille_pol_jours,police_jours);
-      else
-        inscrit_cellule(nombre_jours,arrplan_jours,couleur_dim,taille_pol_jours,police_jours);
-      nombre_jours++;
-    }
-    document.write("<\/tr>");
-  }
-document.write("<\/table>");
-}
- 
-function inscrit_entete(titre_mois,couleurAP,couleurpolice,taillepolice,police) {
-document.write("<tr>");
-document.write('<td align="center" colspan="7" valign="middle" bgcolor="'+couleurAP+'">');
-document.write('<font size="'+taillepolice+'" color="'+couleurpolice+'" face="'+police+'"><b>');
-document.write(titre_mois);
-document.write("<\/b><\/font><\/td><\/tr>");
-document.write("<tr>");
-for(var i=0;i<=6;i++)
-  inscrit_cellule(jour[i],couleurAP,couleurpolice,taillepolice,police);
-document.write("<\/tr>");
-}
- 
-function inscrit_cellule(contenu,couleurAP,couleurpolice,taillepolice,police) {
-document.write('<td align="center" valign="middle" bgcolor="'+couleurAP+'">');
-document.write('<font size="'+taillepolice+'" color="'+couleurpolice+'" face="'+police+'"><b>');
-document.write(contenu);
-document.write("<\/b><\/font><\/td>");
-}
-//-->
+<head>
+<script language="JavaScript" src="pupdate.js">
+
+/*
+Popup calendar script by Sev Kotchnev (webmaster@personal-connections.com)
+For full source code and installation instructions to this script
+Visit http://www.dynamicdrive.com
+*/
+
 </script>
+</head>
+
+<script language="JavaScript">
+if (document.all) {
+ document.writeln("<div id=\"PopUpCalendar\" style=\"position:absolute; left:0px; top:0px; z-index:7; width:200px; height:77px; overflow: visible; visibility: hidden; background-color: #FFFFFF; border: 1px none #000000\" onMouseOver=\"if(ppcTI){clearTimeout(ppcTI);ppcTI=false;}\" onMouseOut=\"ppcTI=setTimeout(\'hideCalendar()\',500)\">");
+ document.writeln("<div id=\"monthSelector\" style=\"position:absolute; left:0px; top:0px; z-index:9; width:181px; height:27px; overflow: visible; visibility:inherit\">");}
+else if (document.layers) {
+ document.writeln("<layer id=\"PopUpCalendar\" pagex=\"0\" pagey=\"0\" width=\"200\" height=\"200\" z-index=\"100\" visibility=\"hide\" bgcolor=\"#FFFFFF\" onMouseOver=\"if(ppcTI){clearTimeout(ppcTI);ppcTI=false;}\" onMouseOut=\"ppcTI=setTimeout('hideCalendar()',500)\">");
+ document.writeln("<layer id=\"monthSelector\" left=\"0\" top=\"0\" width=\"181\" height=\"27\" z-index=\"9\" visibility=\"inherit\">");}
+else {
+ document.writeln("<p><font color=\"#FF0000\"><b>Error ! The current browser is either too old or too modern (usind DOM document structure).</b></font></p>");}
+</script>
+<noscript><p><font color="#FF0000"><b>JavaScript is not activated !</b></font></p></noscript>
+<table border="1" cellspacing="1" cellpadding="2" width="200" bordercolorlight="#000000" bordercolordark="#000000" vspace="0" hspace="0"><form name="ppcMonthList" method="post"><tr><td align="center" bgcolor="#CCCCCC"><a href="javascript:moveMonth('Back')" onMouseOver="window.status=' ';return true;"><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"><b>< </b></font></a><font face="MS Sans Serif, sans-serif" size="1"> 
+<select name="sItem" onMouseOut="if(ppcIE){window.event.cancelBubble = true;}" onChange="switchMonth(this.options[this.selectedIndex].value)" style="font-family: 'MS Sans Serif', sans-serif; font-size: 9pt"><option value="0" selected>2000 • January</option><option value="1">2000 • February</option><option value="2">2000 • March</option><option value="3">2000 • April</option><option value="4">2000 • May</option><option value="5">2000 • June</option><option value="6">2000 • July</option><option value="7">2000 • August</option><option value="8">2000 • September</option><option value="9">2000 • October</option><option value="10">2000 • November</option><option value="11">2000 • December</option><option value="0">2001 • January</option></select></font><a href="javascript:moveMonth('Forward')" onMouseOver="window.status=' ';return true;"><font face="Arial, Helvetica, sans-serif" size="2" color="#000000"><b> ></b></font></a></td></tr></form></table>
+<table border="1" cellspacing="1" cellpadding="2" bordercolorlight="#000000" bordercolordark="#000000" width="200" vspace="0" hspace="0"><tr align="center" bgcolor="#CCCCCC"><td width="20" bgcolor="#FFFFCC"><b><font face="MS Sans Serif, sans-serif" size="1">Su</font></b></td><td width="20"><b><font face="MS Sans Serif, sans-serif" size="1">Mo</font></b></td><td width="20"><b><font face="MS Sans Serif, sans-serif" size="1">Tu</font></b></td><td width="20"><b><font face="MS Sans Serif, sans-serif" size="1">We</font></b></td><td width="20"><b><font face="MS Sans Serif, sans-serif" size="1">Th</font></b></td><td width="20"><b><font face="MS Sans Serif, sans-serif" size="1">Fr</font></b></td><td width="20" bgcolor="#FFFFCC"><b><font face="MS Sans Serif, sans-serif" size="1">Sa</font></b></td></tr></table>
+<script language="JavaScript">
+if (document.all) {
+ document.writeln("</div>");
+ document.writeln("<div id=\"monthDays\" style=\"position:absolute; left:0px; top:52px; z-index:8; width:200px; height:17px; overflow: visible; visibility:inherit; background-color: #FFFFFF; border: 1px none #000000\"> </div></div>");}
+else if (document.layers) {
+ document.writeln("</layer>");
+ document.writeln("<layer id=\"monthDays\" left=\"0\" top=\"52\" width=\"200\" height=\"17\" z-index=\"8\" bgcolor=\"#FFFFFF\" visibility=\"inherit\"> </layer></layer>");}
+else {/*NOP*/}
+</script>
+</body>
+
